@@ -136,12 +136,12 @@ function check_product()
         echo "Couldn't locate the top of the tree.  Try setting TOP." >&2
         return
     fi
-    if (echo -n $1 | grep -q -e "^fluid_") ; then
-        FLUID_BUILD=$(echo -n $1 | sed -e 's/^fluid_//g')
+    if (echo -n $1 | grep -q -e "^titanium_") ; then
+        TITANIUM_BUILD=$(echo -n $1 | sed -e 's/^titanium_//g')
     else
-        FLUID_BUILD=
+        TITANIUM_BUILD=
     fi
-    export FLUID_BUILD
+    export TITANIUM_BUILD
 
         TARGET_PRODUCT=$1 \
         TARGET_BUILD_VARIANT= \
@@ -1397,7 +1397,7 @@ function fixup_common_out_dir() {
     common_out_dir=$(get_build_var OUT_DIR)/target/common
     target_device=$(get_build_var TARGET_DEVICE)
     common_target_out=common-${target_device}
-    if [ ! -z $FLUID_FIXUP_COMMON_OUT ]; then
+    if [ ! -z $TITANIUM_FIXUP_COMMON_OUT ]; then
         if [ -d ${common_out_dir} ] && [ ! -L ${common_out_dir} ]; then
             mv ${common_out_dir} ${common_out_dir}-${target_device}
             ln -s ${common_target_out} ${common_out_dir}
@@ -1438,12 +1438,12 @@ function breakfast()
             # A buildtype was specified, assume a full device name
             lunch $target
         else
-            # This is probably just the Fluid model name
+            # This is probably just the Titanium model name
             if [ -z "$variant" ]; then
                 variant="userdebug"
             fi
 
-            lunch fluid_$target-$variant
+            lunch titanium_$target-$variant
         fi
     fi
     return $?
