@@ -917,6 +917,22 @@ else if get_stage("%(bcb_dev)s") == "3/3" then
   script.Print("Target: {}".format(target_info.fingerprint))
 
   script.AppendExtra("ifelse(is_mounted(\"/system\"), unmount(\"/system\"));")
+
+  androidver = target_info.GetBuildProp("ro.build.version.release")
+  # tiver = target_info.GetBuildProp("ro.titanium.build.version")
+  # build_date = target_info.GetBuildProp("ro.titanium.build.date")
+  securitypatch = target_info.GetBuildProp("ro.build.version.security_patch")
+  tidevice = target_info.GetBuildProp("ro.product.system.model")
+
+  script.Print("--------------------------------------------");
+  script.Print("               ProjectTitanium              ");
+  script.Print("--------------------------------------------");
+  # script.Print("ProjectTitanium Version: %s"%(tiver));
+  script.Print("Android version: %s"%(androidver));
+  # script.Print("Build date: %s"%(build_date));
+  script.Print("Security patch date: %s"%(securitypatch));
+  script.Print("Device: %s"%(tidevice));
+
   device_specific.FullOTA_InstallBegin()
 
   CopyInstallTools(output_zip)
