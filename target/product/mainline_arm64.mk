@@ -31,7 +31,6 @@ PRODUCT_ARTIFACT_PATH_REQUIREMENT_WHITELIST += \
 
 # Modules that are to be moved to /product
 PRODUCT_ARTIFACT_PATH_REQUIREMENT_WHITELIST += \
-  system/app/Calendar/Calendar.apk \
   system/app/DeskClock/DeskClock.apk \
   system/app/DeskClock/oat/arm64/DeskClock.odex \
   system/app/DeskClock/oat/arm64/DeskClock.vdex \
